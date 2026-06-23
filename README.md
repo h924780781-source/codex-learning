@@ -15,3 +15,7 @@
 ## 
 我正在学习 VS Code 的 Git 图形界面。
 我正在学习如何查看修改对比。
+## 第三天学习记录
+
+我已经学会 HTML、CSS、JavaScript 三个文件如何一起工作。
+HTML 负责内容，CSS 负责样式，JavaScript 负责交互。
