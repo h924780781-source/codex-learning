@@ -12,3 +12,5 @@
 - git push：上传到 GitHub
 - git pull：从 GitHub 下载最新内容
 - git clone：从 GitHub 复制项目到电脑
+## 
+我正在学习 VS Code 的 Git 图形界面。
