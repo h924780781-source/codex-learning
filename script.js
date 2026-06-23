@@ -15,5 +15,6 @@ function sayHello() {
     helloResult.textContent = "请先输入名字";
   } else {
     helloResult.textContent = "你好，" + name;
+    nameInput.value = "";
   }
 }
