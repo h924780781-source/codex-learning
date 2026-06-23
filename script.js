@@ -9,6 +9,11 @@ function changeTitle() {
 function sayHello() {
   const nameInput = document.getElementById("nameInput");
   const helloResult = document.getElementById("helloResult");
+  const name = nameInput.value;
 
-  helloResult.textContent = "你好，" + nameInput.value;
+  if (name === "") {
+    helloResult.textContent = "请先输入名字";
+  } else {
+    helloResult.textContent = "你好，" + name;
+  }
 }
