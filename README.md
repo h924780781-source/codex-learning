@@ -14,3 +14,4 @@
 - git clone：从 GitHub 复制项目到电脑
 ## 
 我正在学习 VS Code 的 Git 图形界面。
+我正在学习如何查看修改对比。
