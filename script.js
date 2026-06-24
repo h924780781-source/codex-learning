@@ -18,3 +18,10 @@ function sayHello() {
     nameInput.value = "";
   }
 }
+const nameInput = document.getElementById("nameInput");
+
+nameInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    sayHello();
+  }
+});
