@@ -28,6 +28,13 @@ function sayHello() {
   }
 }
 
+function resetCount() {
+  count = 0;
+
+  const helloCount = document.getElementById("helloCount");
+  helloCount.textContent = "你已经打招呼 0 次";
+}
+
 const nameInput = document.getElementById("nameInput");
 
 nameInput.addEventListener("keydown", function(event) {
