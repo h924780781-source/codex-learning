@@ -1,12 +1,15 @@
 let count = 0;
+
 function changeMessage() {
   const message = document.getElementById("message");
   message.textContent = "我已经开始学习 JavaScript 了！";
 }
+
 function changeTitle() {
   const title = document.getElementById("title");
   title.textContent = "我正在学习前端";
 }
+
 function sayHello() {
   const nameInput = document.getElementById("nameInput");
   const helloResult = document.getElementById("helloResult");
@@ -14,16 +17,17 @@ function sayHello() {
 
   if (name === "") {
     helloResult.textContent = "请先输入名字";
-} else {
-  helloResult.textContent = "你好，" + name;
-  count = count + 1;
+  } else {
+    helloResult.textContent = "你好，" + name;
+    count = count + 1;
 
-  const helloCount = document.getElementById("helloCount");
-  helloCount.textContent = "你已经打招呼 " + count + " 次";
+    const helloCount = document.getElementById("helloCount");
+    helloCount.textContent = "你已经打招呼 " + count + " 次";
 
-  nameInput.value = "";
+    nameInput.value = "";
+  }
 }
-}
+
 const nameInput = document.getElementById("nameInput");
 
 nameInput.addEventListener("keydown", function(event) {
