@@ -154,23 +154,32 @@ function addStudyItemToPage(text) {
     };
   };
 
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete-button");
-  deleteButton.textContent = "删除";
-  deleteButton.onclick = function() {
-    newItem.remove();
-
-    studyItems = studyItems.filter(function(item) {
-      return item !== currentText;
-    });
-
-    saveStudyItems();
-  };
+  const deleteButton = createDeleteButton(newItem, function() {
+    return currentText;
+  });
 
   newItem.appendChild(textSpan);
   newItem.appendChild(editButton);
   newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
+}
+
+function createDeleteButton(newItem, getCurrentText) {
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.textContent = "删除";
+
+  deleteButton.onclick = function() {
+    newItem.remove();
+
+    studyItems = studyItems.filter(function(item) {
+      return item !== getCurrentText();
+    });
+
+    saveStudyItems();
+  };
+
+  return deleteButton;
 }
 
 function clearStudyItems() {
