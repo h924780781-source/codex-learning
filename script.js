@@ -1,4 +1,5 @@
 let count = 0;
+let studyItems = [];
 let isSecretVisible = true;
 
 function changeMessage() {
@@ -64,25 +65,50 @@ function toggleColor() {
 }
 function addStudyItem() {
   const studyInput = document.getElementById("studyInput");
-  const studyList = document.getElementById("studyList");
   const text = studyInput.value.trim();
 
   if (text === "") {
     return;
   }
 
-const newItem = document.createElement("li");
-newItem.classList.add("study-item");
-newItem.textContent = text + " ";
+  studyItems.push(text);
+  saveStudyItems();
+  addStudyItemToPage(text);
 
-const deleteButton = document.createElement("button");
-deleteButton.classList.add("delete-button");
-deleteButton.textContent = "删除";
+  studyInput.value = "";
+}
+
+function saveStudyItems() {
+  localStorage.setItem("studyItems", JSON.stringify(studyItems));
+}
+function loadStudyItems() {
+  const savedItems = localStorage.getItem("studyItems");
+
+  if (savedItems === null) {
+    return;
+  }
+
+  studyItems = JSON.parse(savedItems);
+
+  for (const text of studyItems) {
+    addStudyItemToPage(text);
+  }
+}
+function addStudyItemToPage(text) {
+  const studyList = document.getElementById("studyList");
+
+  const newItem = document.createElement("li");
+  newItem.classList.add("study-item");
+  newItem.textContent = text + " ";
+
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.textContent = "删除";
   deleteButton.onclick = function() {
     newItem.remove();
   };
 
   newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
-  studyInput.value = "";
 }
+loadStudyItems();
