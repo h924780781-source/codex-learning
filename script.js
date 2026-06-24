@@ -2,6 +2,7 @@ let count = 0;
 let studyItems = [];
 let isSecretVisible = true;
 
+// 基础按钮练习
 function changeMessage() {
   const message = document.getElementById("message");
   message.textContent = "我已经开始学习 JavaScript 了！";
@@ -12,6 +13,7 @@ function changeTitle() {
   title.textContent = "我正在学习前端";
 }
 
+// 打招呼练习
 function sayHello() {
   const nameInput = document.getElementById("nameInput");
   const helloResult = document.getElementById("helloResult");
@@ -45,6 +47,7 @@ nameInput.addEventListener("keydown", function(event) {
   }
 });
 
+// 显示、隐藏、样式切换练习
 function toggleSecret() {
   const secretText = document.getElementById("secretText");
   const secretButton = document.getElementById("secretButton");
@@ -59,10 +62,13 @@ function toggleSecret() {
     isSecretVisible = true;
   }
 }
+
 function toggleColor() {
   const colorText = document.getElementById("colorText");
   colorText.classList.toggle("red-text");
 }
+
+// 学习内容列表练习
 function addStudyItem() {
   const studyInput = document.getElementById("studyInput");
   const text = studyInput.value.trim();
@@ -81,6 +87,7 @@ function addStudyItem() {
 function saveStudyItems() {
   localStorage.setItem("studyItems", JSON.stringify(studyItems));
 }
+
 function loadStudyItems() {
   const savedItems = localStorage.getItem("studyItems");
 
@@ -94,6 +101,7 @@ function loadStudyItems() {
     addStudyItemToPage(text);
   }
 }
+
 function addStudyItemToPage(text) {
   let currentText = text;
   const studyList = document.getElementById("studyList");
@@ -108,43 +116,43 @@ function addStudyItemToPage(text) {
   editButton.classList.add("delete-button");
   editButton.textContent = "编辑";
   editButton.onclick = function() {
-  const editInput = document.createElement("input");
-  editInput.type = "text";
-  editInput.value = currentText;
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = currentText;
 
-  const saveButton = document.createElement("button");
-  saveButton.classList.add("delete-button");
-  saveButton.textContent = "保存";
+    const saveButton = document.createElement("button");
+    saveButton.classList.add("delete-button");
+    saveButton.textContent = "保存";
 
-  newItem.textContent = "";
-  newItem.appendChild(editInput);
-  newItem.appendChild(saveButton);
+    newItem.textContent = "";
+    newItem.appendChild(editInput);
+    newItem.appendChild(saveButton);
 
-  saveButton.onclick = function() {
-    const trimmedText = editInput.value.trim();
+    saveButton.onclick = function() {
+      const trimmedText = editInput.value.trim();
 
-    if (trimmedText === "") {
-      return;
-    }
-
-    studyItems = studyItems.map(function(item) {
-      if (item === currentText) {
-        return trimmedText;
+      if (trimmedText === "") {
+        return;
       }
 
-      return item;
-    });
+      studyItems = studyItems.map(function(item) {
+        if (item === currentText) {
+          return trimmedText;
+        }
 
-    currentText = trimmedText;
-    saveStudyItems();
+        return item;
+      });
 
-    textSpan.textContent = currentText + " ";
-    newItem.textContent = "";
-    newItem.appendChild(textSpan);
-    newItem.appendChild(editButton);
-    newItem.appendChild(deleteButton);
+      currentText = trimmedText;
+      saveStudyItems();
+
+      textSpan.textContent = currentText + " ";
+      newItem.textContent = "";
+      newItem.appendChild(textSpan);
+      newItem.appendChild(editButton);
+      newItem.appendChild(deleteButton);
+    };
   };
-};
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
@@ -164,7 +172,6 @@ function addStudyItemToPage(text) {
   newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
 }
-loadStudyItems();
 
 function clearStudyItems() {
   studyItems = [];
@@ -176,3 +183,6 @@ function clearStudyItems() {
     item.remove();
   }
 }
+
+// 页面打开时恢复浏览器本地保存的学习内容
+loadStudyItems();
