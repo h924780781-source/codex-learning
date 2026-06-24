@@ -112,10 +112,30 @@ function addStudyItemToPage(text) {
   const textSpan = document.createElement("span");
   textSpan.textContent = currentText + " ";
 
+  const deleteButton = createDeleteButton(newItem, function() {
+    return currentText;
+  });
+
+  const editButton = createEditButton(newItem, textSpan, deleteButton, function() {
+    return currentText;
+  }, function(newText) {
+    currentText = newText;
+  });
+
+  newItem.appendChild(textSpan);
+  newItem.appendChild(editButton);
+  newItem.appendChild(deleteButton);
+  studyList.appendChild(newItem);
+}
+
+function createEditButton(newItem, textSpan, deleteButton, getCurrentText, setCurrentText) {
   const editButton = document.createElement("button");
   editButton.classList.add("delete-button");
   editButton.textContent = "编辑";
+
   editButton.onclick = function() {
+    const currentText = getCurrentText();
+
     const editInput = document.createElement("input");
     editInput.type = "text";
     editInput.value = currentText;
@@ -143,10 +163,10 @@ function addStudyItemToPage(text) {
         return item;
       });
 
-      currentText = trimmedText;
+      setCurrentText(trimmedText);
       saveStudyItems();
 
-      textSpan.textContent = currentText + " ";
+      textSpan.textContent = trimmedText + " ";
       newItem.textContent = "";
       newItem.appendChild(textSpan);
       newItem.appendChild(editButton);
@@ -154,14 +174,7 @@ function addStudyItemToPage(text) {
     };
   };
 
-  const deleteButton = createDeleteButton(newItem, function() {
-    return currentText;
-  });
-
-  newItem.appendChild(textSpan);
-  newItem.appendChild(editButton);
-  newItem.appendChild(deleteButton);
-  studyList.appendChild(newItem);
+  return editButton;
 }
 
 function createDeleteButton(newItem, getCurrentText) {
