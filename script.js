@@ -95,25 +95,60 @@ function loadStudyItems() {
   }
 }
 function addStudyItemToPage(text) {
+  let currentText = text;
   const studyList = document.getElementById("studyList");
 
   const newItem = document.createElement("li");
   newItem.classList.add("study-item");
-  newItem.textContent = text + " ";
+
+  const textSpan = document.createElement("span");
+  textSpan.textContent = currentText + " ";
+
+  const editButton = document.createElement("button");
+  editButton.classList.add("delete-button");
+  editButton.textContent = "编辑";
+  editButton.onclick = function() {
+    const newText = prompt("请输入新的学习内容", currentText);
+
+    if (newText === null) {
+      return;
+    }
+
+    const trimmedText = newText.trim();
+
+    if (trimmedText === "") {
+      return;
+    }
+
+    textSpan.textContent = trimmedText + " ";
+
+    studyItems = studyItems.map(function(item) {
+      if (item === currentText) {
+        return trimmedText;
+      }
+
+      return item;
+    });
+
+    currentText = trimmedText;
+    saveStudyItems();
+  };
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
   deleteButton.textContent = "删除";
-deleteButton.onclick = function() {
-  newItem.remove();
+  deleteButton.onclick = function() {
+    newItem.remove();
 
-  studyItems = studyItems.filter(function(item) {
-    return item !== text;
-  });
+    studyItems = studyItems.filter(function(item) {
+      return item !== currentText;
+    });
 
-  saveStudyItems();
+    saveStudyItems();
   };
 
+  newItem.appendChild(textSpan);
+  newItem.appendChild(editButton);
   newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
 }
