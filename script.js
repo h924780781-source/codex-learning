@@ -72,8 +72,15 @@ function addStudyItem() {
   }
 
   const newItem = document.createElement("li");
-  newItem.textContent = text;
+  newItem.textContent = text + " ";
 
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "删除";
+  deleteButton.onclick = function() {
+    newItem.remove();
+  };
+
+  newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
   studyInput.value = "";
 }
