@@ -58,3 +58,7 @@ function toggleSecret() {
     isSecretVisible = true;
   }
 }
+function toggleColor() {
+  const colorText = document.getElementById("colorText");
+  colorText.classList.toggle("red-text");
+}
