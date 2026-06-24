@@ -104,8 +104,14 @@ function addStudyItemToPage(text) {
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
   deleteButton.textContent = "删除";
-  deleteButton.onclick = function() {
-    newItem.remove();
+deleteButton.onclick = function() {
+  newItem.remove();
+
+  studyItems = studyItems.filter(function(item) {
+    return item !== text;
+  });
+
+  saveStudyItems();
   };
 
   newItem.appendChild(deleteButton);
