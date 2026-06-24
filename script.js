@@ -108,19 +108,24 @@ function addStudyItemToPage(text) {
   editButton.classList.add("delete-button");
   editButton.textContent = "编辑";
   editButton.onclick = function() {
-    const newText = prompt("请输入新的学习内容", currentText);
+  const editInput = document.createElement("input");
+  editInput.type = "text";
+  editInput.value = currentText;
 
-    if (newText === null) {
-      return;
-    }
+  const saveButton = document.createElement("button");
+  saveButton.classList.add("delete-button");
+  saveButton.textContent = "保存";
 
-    const trimmedText = newText.trim();
+  newItem.textContent = "";
+  newItem.appendChild(editInput);
+  newItem.appendChild(saveButton);
+
+  saveButton.onclick = function() {
+    const trimmedText = editInput.value.trim();
 
     if (trimmedText === "") {
       return;
     }
-
-    textSpan.textContent = trimmedText + " ";
 
     studyItems = studyItems.map(function(item) {
       if (item === currentText) {
@@ -132,7 +137,14 @@ function addStudyItemToPage(text) {
 
     currentText = trimmedText;
     saveStudyItems();
+
+    textSpan.textContent = currentText + " ";
+    newItem.textContent = "";
+    newItem.appendChild(textSpan);
+    newItem.appendChild(editButton);
+    newItem.appendChild(deleteButton);
   };
+};
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
