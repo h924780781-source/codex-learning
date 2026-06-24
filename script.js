@@ -62,3 +62,18 @@ function toggleColor() {
   const colorText = document.getElementById("colorText");
   colorText.classList.toggle("red-text");
 }
+function addStudyItem() {
+  const studyInput = document.getElementById("studyInput");
+  const studyList = document.getElementById("studyList");
+  const text = studyInput.value.trim();
+
+  if (text === "") {
+    return;
+  }
+
+  const newItem = document.createElement("li");
+  newItem.textContent = text;
+
+  studyList.appendChild(newItem);
+  studyInput.value = "";
+}
