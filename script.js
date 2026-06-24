@@ -109,8 +109,7 @@ function addStudyItemToPage(text) {
   const newItem = document.createElement("li");
   newItem.classList.add("study-item");
 
-  const textSpan = document.createElement("span");
-  textSpan.textContent = currentText + " ";
+  const textSpan = createTextSpan(currentText);
 
   const deleteButton = createDeleteButton(newItem, function() {
     return currentText;
@@ -126,6 +125,13 @@ function addStudyItemToPage(text) {
   newItem.appendChild(editButton);
   newItem.appendChild(deleteButton);
   studyList.appendChild(newItem);
+}
+
+function createTextSpan(text) {
+  const textSpan = document.createElement("span");
+  textSpan.textContent = text + " ";
+
+  return textSpan;
 }
 
 function createEditButton(newItem, textSpan, deleteButton, getCurrentText, setCurrentText) {
