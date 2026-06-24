@@ -71,11 +71,13 @@ function addStudyItem() {
     return;
   }
 
-  const newItem = document.createElement("li");
-  newItem.textContent = text + " ";
+const newItem = document.createElement("li");
+newItem.classList.add("study-item");
+newItem.textContent = text + " ";
 
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "删除";
+const deleteButton = document.createElement("button");
+deleteButton.classList.add("delete-button");
+deleteButton.textContent = "删除";
   deleteButton.onclick = function() {
     newItem.remove();
   };

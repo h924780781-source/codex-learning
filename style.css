@@ -30,3 +30,12 @@
   .red-text {
   color: red;
 }
+.study-item {
+  margin-top: 8px;
+}
+
+.delete-button {
+  margin-left: 10px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
