@@ -118,3 +118,14 @@ deleteButton.onclick = function() {
   studyList.appendChild(newItem);
 }
 loadStudyItems();
+
+function clearStudyItems() {
+  studyItems = [];
+  saveStudyItems();
+
+  const studyItemElements = document.querySelectorAll(".study-item");
+
+  for (const item of studyItemElements) {
+    item.remove();
+  }
+}
