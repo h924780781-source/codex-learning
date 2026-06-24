@@ -46,12 +46,15 @@ nameInput.addEventListener("keydown", function(event) {
 
 function toggleSecret() {
   const secretText = document.getElementById("secretText");
+  const secretButton = document.getElementById("secretButton");
 
   if (isSecretVisible === true) {
     secretText.style.display = "none";
+    secretButton.textContent = "显示文字";
     isSecretVisible = false;
   } else {
     secretText.style.display = "block";
+    secretButton.textContent = "隐藏文字";
     isSecretVisible = true;
   }
 }
