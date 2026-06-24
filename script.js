@@ -32,7 +32,7 @@ function sayHello() {
   }
 }
 
-function resetCount() {
+function resetGreetingCount() {
   count = 0;
 
   const helloCount = document.getElementById("helloCount");
