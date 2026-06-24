@@ -1,4 +1,5 @@
 let count = 0;
+let isSecretVisible = true;
 
 function changeMessage() {
   const message = document.getElementById("message");
@@ -42,3 +43,15 @@ nameInput.addEventListener("keydown", function(event) {
     sayHello();
   }
 });
+
+function toggleSecret() {
+  const secretText = document.getElementById("secretText");
+
+  if (isSecretVisible === true) {
+    secretText.style.display = "none";
+    isSecretVisible = false;
+  } else {
+    secretText.style.display = "block";
+    isSecretVisible = true;
+  }
+}
