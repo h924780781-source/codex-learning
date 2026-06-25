@@ -70,3 +70,16 @@ ul {
   background-color: #d73a49;
   transform: translateX(220px) rotate(15deg) scale(1.15);
 }
+.move-box.auto-moving {
+  animation: move-left-right 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes move-left-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(220px);
+  }
+}

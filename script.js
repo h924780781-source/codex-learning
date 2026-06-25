@@ -74,6 +74,11 @@ function toggleMoveBox() {
   moveBox.classList.toggle("moved");
 }
 
+function toggleAutoMoveBox() {
+  const moveBox = document.getElementById("moveBox");
+  moveBox.classList.toggle("auto-moving");
+}
+
 // 学习内容列表练习
 function addStudyItem() {
   const studyInput = document.getElementById("studyInput");
