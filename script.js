@@ -92,7 +92,10 @@ function toggleAutoMoveBox() {
 function updateBoxPosition() {
   const moveBox = document.getElementById("moveBox");
   moveBox.style.transform = "translate(" + boxX + "px, " + boxY + "px)";
+
+  checkHitTarget();
 }
+
 document.addEventListener("keydown", function(event) {
   if (event.key === "ArrowRight") {
     boxX = boxX + 20;
@@ -112,22 +115,32 @@ document.addEventListener("keydown", function(event) {
 
   if (boxX < 0) {
   boxX = 0;
-}
+  }
 
-if (boxX > 220) {
+  if (boxX > 220) {
   boxX = 220;
-}
+  }
 
-if (boxY < 0) {
+  if (boxY < 0) {
   boxY = 0;
-}
+  }
 
-if (boxY > 40) {
+  if (boxY > 40) {
   boxY = 40;
-}
+  }
 
   updateBoxPosition();
-});
+  });
+
+  function checkHitTarget() {
+  const hitMessage = document.getElementById("hitMessage");
+
+  if (boxX >= 200 && boxY >= 0 && boxY <= 40) {
+    hitMessage.textContent = "成功碰到目标！";
+  } else {
+    hitMessage.textContent = "还没有碰到目标。";
+  }
+}
 
 // 学习内容列表练习
 function addStudyItem() {

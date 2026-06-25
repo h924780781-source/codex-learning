@@ -55,6 +55,17 @@ ul {
   background: white;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
+}
+
+.target-box {
+  width: 40px;
+  height: 40px;
+  background-color: #2da44e;
+  border-radius: 50%;
+  position: absolute;
+  left: 240px;
+  top: 30px;
 }
 
 .move-box {

@@ -53,9 +53,12 @@
   <h2>动画练习</h2>
   <p>点击按钮，让方块平滑移动。</p>
 
-  <div class="animation-stage">
-    <div id="moveBox" class="move-box"></div>
-  </div>
+ <div class="animation-stage">
+  <div id="moveBox" class="move-box"></div>
+  <div id="targetBox" class="target-box"></div>
+</div>
+
+<p id="hitMessage">还没有碰到目标。</p>
 
   <button onclick="toggleMoveBox()">移动方块</button>
 <button id="autoMoveButton" onclick="toggleAutoMoveBox()">开始自动移动</button>
