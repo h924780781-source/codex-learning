@@ -1,6 +1,8 @@
 let count = 0;
 let studyItems = [];
 let isSecretVisible = true;
+let boxX = 0;
+let boxY = 0;
 
 // 基础按钮练习
 function changeMessage() {
@@ -86,6 +88,30 @@ function toggleAutoMoveBox() {
     autoMoveButton.textContent = "开始自动移动";
   }
 }
+
+function updateBoxPosition() {
+  const moveBox = document.getElementById("moveBox");
+  moveBox.style.transform = "translate(" + boxX + "px, " + boxY + "px)";
+}
+document.addEventListener("keydown", function(event) {
+  if (event.key === "ArrowRight") {
+    boxX = boxX + 20;
+  }
+
+  if (event.key === "ArrowLeft") {
+    boxX = boxX - 20;
+  }
+
+  if (event.key === "ArrowDown") {
+    boxY = boxY + 20;
+  }
+
+  if (event.key === "ArrowUp") {
+    boxY = boxY - 20;
+  }
+
+  updateBoxPosition();
+});
 
 // 学习内容列表练习
 function addStudyItem() {
