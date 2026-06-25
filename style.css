@@ -68,5 +68,5 @@ ul {
 
 .move-box.moved {
   background-color: #d73a49;
-  transform: translateX(220px);
+  transform: translateX(220px) rotate(15deg) scale(1.15);
 }
