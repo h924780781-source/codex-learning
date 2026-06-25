@@ -110,6 +110,22 @@ document.addEventListener("keydown", function(event) {
     boxY = boxY - 20;
   }
 
+  if (boxX < 0) {
+  boxX = 0;
+}
+
+if (boxX > 220) {
+  boxX = 220;
+}
+
+if (boxY < 0) {
+  boxY = 0;
+}
+
+if (boxY > 40) {
+  boxY = 40;
+}
+
   updateBoxPosition();
 });
 
