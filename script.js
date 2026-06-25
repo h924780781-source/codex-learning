@@ -68,6 +68,12 @@ function toggleColor() {
   colorText.classList.toggle("red-text");
 }
 
+// 动画练习
+function toggleMoveBox() {
+  const moveBox = document.getElementById("moveBox");
+  moveBox.classList.toggle("moved");
+}
+
 // 学习内容列表练习
 function addStudyItem() {
   const studyInput = document.getElementById("studyInput");

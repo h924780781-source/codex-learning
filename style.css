@@ -46,3 +46,27 @@ ul {
 .red-text {
   color: red;
 }
+
+/* 动画练习 */
+.animation-stage {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 12px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.move-box {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  background-color: #1f6feb;
+  border-radius: 8px;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+.move-box.moved {
+  background-color: #d73a49;
+  transform: translateX(220px);
+}
