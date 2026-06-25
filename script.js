@@ -76,7 +76,15 @@ function toggleMoveBox() {
 
 function toggleAutoMoveBox() {
   const moveBox = document.getElementById("moveBox");
+  const autoMoveButton = document.getElementById("autoMoveButton");
+
   moveBox.classList.toggle("auto-moving");
+
+  if (moveBox.classList.contains("auto-moving")) {
+    autoMoveButton.textContent = "停止自动移动";
+  } else {
+    autoMoveButton.textContent = "开始自动移动";
+  }
 }
 
 // 学习内容列表练习
