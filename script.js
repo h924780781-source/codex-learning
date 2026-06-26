@@ -3,6 +3,8 @@ let studyItems = [];
 let isSecretVisible = true;
 let boxX = 0;
 let boxY = 0;
+let score = 0;
+let hasHitTarget = false;
 
 // 基础按钮练习
 function changeMessage() {
@@ -132,13 +134,21 @@ document.addEventListener("keydown", function(event) {
   updateBoxPosition();
   });
 
-  function checkHitTarget() {
+ function checkHitTarget() {
   const hitMessage = document.getElementById("hitMessage");
+  const scoreText = document.getElementById("scoreText");
 
   if (boxX >= 200 && boxY >= 0 && boxY <= 40) {
     hitMessage.textContent = "成功碰到目标！";
+
+    if (hasHitTarget === false) {
+      score = score + 1;
+      scoreText.textContent = "分数：" + score;
+      hasHitTarget = true;
+    }
   } else {
     hitMessage.textContent = "还没有碰到目标。";
+    hasHitTarget = false;
   }
 }
 
