@@ -5,6 +5,8 @@ let boxX = 0;
 let boxY = 0;
 let score = 0;
 let hasHitTarget = false;
+let targetX = 240;
+let targetY = 30;
 
 // 基础按钮练习
 function changeMessage() {
@@ -134,17 +136,36 @@ document.addEventListener("keydown", function(event) {
   updateBoxPosition();
   });
 
+  function updateTargetPosition() {
+  const targetBox = document.getElementById("targetBox");
+  targetBox.style.left = targetX + "px";
+  targetBox.style.top = targetY + "px";
+}
+
+function moveTargetToRandomPosition() {
+  targetX = Math.floor(Math.random() * 220);
+  targetY = Math.floor(Math.random() * 40);
+
+  updateTargetPosition();
+}
+
  function checkHitTarget() {
   const hitMessage = document.getElementById("hitMessage");
   const scoreText = document.getElementById("scoreText");
 
-  if (boxX >= 200 && boxY >= 0 && boxY <= 40) {
+if (
+  boxX < targetX + 40 &&
+  boxX + 60 > targetX &&
+  boxY < targetY + 40 &&
+  boxY + 60 > targetY
+) {
     hitMessage.textContent = "成功碰到目标！";
 
     if (hasHitTarget === false) {
       score = score + 1;
       scoreText.textContent = "分数：" + score;
       hasHitTarget = true;
+      moveTargetToRandomPosition();
     }
   } else {
     hitMessage.textContent = "还没有碰到目标。";
@@ -298,3 +319,4 @@ function clearStudyItems() {
 
 // 页面打开时恢复浏览器本地保存的学习内容
 loadStudyItems();
+updateTargetPosition();
