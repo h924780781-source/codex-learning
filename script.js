@@ -7,6 +7,8 @@ let score = 0;
 let hasHitTarget = false;
 let targetX = 240;
 let targetY = 30;
+let timeLeft = 30;
+let isGameOver = false;
 
 // 基础按钮练习
 function changeMessage() {
@@ -142,6 +144,22 @@ document.addEventListener("keydown", function(event) {
   targetBox.style.top = targetY + "px";
 }
 
+function startTimer() {
+  const timeText = document.getElementById("timeText");
+  const gameStatus = document.getElementById("gameStatus");
+
+  const timer = setInterval(function() {
+    timeLeft = timeLeft - 1;
+    timeText.textContent = "剩余时间：" + timeLeft + " 秒";
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      isGameOver = true;
+      gameStatus.textContent = "游戏结束。";
+    }
+  }, 1000);
+}
+
 function moveTargetToRandomPosition() {
   targetX = Math.floor(Math.random() * 220);
   targetY = Math.floor(Math.random() * 40);
@@ -150,6 +168,9 @@ function moveTargetToRandomPosition() {
 }
 
  function checkHitTarget() {
+if (isGameOver === true) {
+  return;
+}
   const hitMessage = document.getElementById("hitMessage");
   const scoreText = document.getElementById("scoreText");
 
@@ -320,3 +341,4 @@ function clearStudyItems() {
 // 页面打开时恢复浏览器本地保存的学习内容
 loadStudyItems();
 updateTargetPosition();
+startTimer();
