@@ -9,6 +9,7 @@ let targetX = 240;
 let targetY = 30;
 let timeLeft = 30;
 let isGameOver = false;
+let timerId = null;
 
 // 基础按钮练习
 function changeMessage() {
@@ -148,16 +149,41 @@ function startTimer() {
   const timeText = document.getElementById("timeText");
   const gameStatus = document.getElementById("gameStatus");
 
-  const timer = setInterval(function() {
-    timeLeft = timeLeft - 1;
-    timeText.textContent = "剩余时间：" + timeLeft + " 秒";
+timerId = setInterval(function() {
+  timeLeft = timeLeft - 1;
+  timeText.textContent = "剩余时间：" + timeLeft + " 秒";
 
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      isGameOver = true;
-      gameStatus.textContent = "游戏结束。";
-    }
-  }, 1000);
+  if (timeLeft <= 0) {
+    clearInterval(timerId);
+    isGameOver = true;
+    gameStatus.textContent = "游戏结束。";
+  }
+}, 1000);
+}
+
+function restartGame() {
+  clearInterval(timerId);
+
+  score = 0;
+  timeLeft = 30;
+  isGameOver = false;
+  hasHitTarget = false;
+  boxX = 0;
+  boxY = 0;
+
+  const scoreText = document.getElementById("scoreText");
+  const timeText = document.getElementById("timeText");
+  const gameStatus = document.getElementById("gameStatus");
+  const hitMessage = document.getElementById("hitMessage");
+
+  scoreText.textContent = "分数：0";
+  timeText.textContent = "剩余时间：30 秒";
+  gameStatus.textContent = "游戏进行中。";
+  hitMessage.textContent = "还没有碰到目标。";
+
+  updateBoxPosition();
+  moveTargetToRandomPosition();
+  startTimer();
 }
 
 function moveTargetToRandomPosition() {
