@@ -1,6 +1,8 @@
 let count = 0;
 let studyItems = [];
 let isSecretVisible = true;
+
+// 小游戏状态
 let boxX = 0;
 let boxY = 0;
 let score = 0;
@@ -77,7 +79,7 @@ function toggleColor() {
   colorText.classList.toggle("red-text");
 }
 
-// 动画练习
+// 动画和小游戏练习
 function toggleMoveBox() {
   const moveBox = document.getElementById("moveBox");
   moveBox.classList.toggle("moved");
@@ -121,25 +123,25 @@ document.addEventListener("keydown", function(event) {
   }
 
   if (boxX < 0) {
-  boxX = 0;
+    boxX = 0;
   }
 
   if (boxX > 220) {
-  boxX = 220;
+    boxX = 220;
   }
 
   if (boxY < 0) {
-  boxY = 0;
+    boxY = 0;
   }
 
   if (boxY > 40) {
-  boxY = 40;
+    boxY = 40;
   }
 
   updateBoxPosition();
-  });
+});
 
-  function updateTargetPosition() {
+function updateTargetPosition() {
   const targetBox = document.getElementById("targetBox");
   targetBox.style.left = targetX + "px";
   targetBox.style.top = targetY + "px";
@@ -149,16 +151,16 @@ function startTimer() {
   const timeText = document.getElementById("timeText");
   const gameStatus = document.getElementById("gameStatus");
 
-timerId = setInterval(function() {
-  timeLeft = timeLeft - 1;
-  timeText.textContent = "剩余时间：" + timeLeft + " 秒";
+  timerId = setInterval(function() {
+    timeLeft = timeLeft - 1;
+    timeText.textContent = "剩余时间：" + timeLeft + " 秒";
 
-  if (timeLeft <= 0) {
-    clearInterval(timerId);
-    isGameOver = true;
-    gameStatus.textContent = "游戏结束。";
-  }
-}, 1000);
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      isGameOver = true;
+      gameStatus.textContent = "游戏结束。";
+    }
+  }, 1000);
 }
 
 function restartGame() {
@@ -193,19 +195,20 @@ function moveTargetToRandomPosition() {
   updateTargetPosition();
 }
 
- function checkHitTarget() {
-if (isGameOver === true) {
-  return;
-}
+function checkHitTarget() {
+  if (isGameOver === true) {
+    return;
+  }
+
   const hitMessage = document.getElementById("hitMessage");
   const scoreText = document.getElementById("scoreText");
 
-if (
-  boxX < targetX + 40 &&
-  boxX + 60 > targetX &&
-  boxY < targetY + 40 &&
-  boxY + 60 > targetY
-) {
+  if (
+    boxX < targetX + 40 &&
+    boxX + 60 > targetX &&
+    boxY < targetY + 40 &&
+    boxY + 60 > targetY
+  ) {
     hitMessage.textContent = "成功碰到目标！";
 
     if (hasHitTarget === false) {
