@@ -177,11 +177,11 @@ function startTimer() {
   if (timeLeft <= 0) {
     clearInterval(timerId);
     isGameOver = true;
-    gameStatus.textContent = "游戏结束。";
+    gameStatus.textContent = "游戏结束，你的最终分数是 " + score + "。";
 
     const startButton = document.getElementById("startButton");
     startButton.textContent = "游戏已结束";
-    }
+  }
   }, 1000);
 }
 
