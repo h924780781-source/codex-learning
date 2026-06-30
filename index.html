@@ -6,13 +6,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="page-header">
     <h1 id="title">你好，Codex</h1>
     <p>这是我学习 HTML 的第一个网页。</p>
     <button onclick="changeTitle()">修改标题</button>
-  </header>
 
-  <section class="page-section">
+
+<nav class="site-nav">
+  <a href="#studySection">学习记录</a>
+  <a href="#gameSection">小游戏</a>
+</nav>
+</header>
+
+<section id="studySection" class="page-section">
     <h2>我的学习内容</h2>
     <ul id="studyList">
       <li>学习 Codex</li>
@@ -66,7 +73,7 @@
     <button onclick="toggleColor()">切换颜色</button>
   </section>
 
-  <section class="page-section game-panel">
+  <section id="gameSection" class="page-section game-panel">
     <h2>动画练习</h2>
     <p>点击按钮，让方块平滑移动。</p>
 

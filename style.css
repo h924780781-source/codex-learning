@@ -58,6 +58,26 @@ ul {
 }
 
 /* 表单和按钮 */
+
+.site-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.site-nav a {
+  padding: 6px 12px;
+  border: 1px solid #1f6feb;
+  border-radius: 6px;
+  color: #1f6feb;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  background: #1f6feb;
+  color: white;
+}
+
 input {
   min-height: 34px;
   padding: 6px 10px;
