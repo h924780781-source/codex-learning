@@ -156,10 +156,14 @@ function startGame() {
   isGameStarted = true;
   isGameOver = false;
 
-  const gameStatus = document.getElementById("gameStatus");
-  gameStatus.textContent = "游戏进行中。";
+const gameStatus = document.getElementById("gameStatus");
+const startButton = document.getElementById("startButton");
 
-  startTimer();
+gameStatus.textContent = "游戏进行中。";
+startButton.disabled = true;
+startButton.textContent = "游戏进行中";
+
+startTimer();
 }
 
 function startTimer() {
@@ -170,10 +174,13 @@ function startTimer() {
     timeLeft = timeLeft - 1;
     timeText.textContent = "剩余时间：" + timeLeft + " 秒";
 
-    if (timeLeft <= 0) {
-      clearInterval(timerId);
-      isGameOver = true;
-      gameStatus.textContent = "游戏结束。";
+  if (timeLeft <= 0) {
+    clearInterval(timerId);
+    isGameOver = true;
+    gameStatus.textContent = "游戏结束。";
+
+    const startButton = document.getElementById("startButton");
+    startButton.textContent = "游戏已结束";
     }
   }, 1000);
 }
@@ -193,11 +200,14 @@ function restartGame() {
   const timeText = document.getElementById("timeText");
   const gameStatus = document.getElementById("gameStatus");
   const hitMessage = document.getElementById("hitMessage");
+  const startButton = document.getElementById("startButton");
 
   scoreText.textContent = "分数：0";
   timeText.textContent = "剩余时间：30 秒";
   gameStatus.textContent = "游戏进行中。";
   hitMessage.textContent = "还没有碰到目标。";
+  startButton.disabled = true;
+  startButton.textContent = "游戏进行中";
 
   updateBoxPosition();
   moveTargetToRandomPosition();
