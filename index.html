@@ -6,79 +6,101 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="title">你好，Codex</h1>
-  <button onclick="changeTitle()">修改标题</button>
-  <p>这是我学习 HTML 的第一个网页。</p>
+  <header class="page-header">
+    <h1 id="title">你好，Codex</h1>
+    <p>这是我学习 HTML 的第一个网页。</p>
+    <button onclick="changeTitle()">修改标题</button>
+  </header>
 
-  <h2>我的学习内容</h2>
-  <ul id="studyList">
-    <li>学习 Codex</li>
-    <li>学习 Git</li>
-    <li>学习 GitHub</li>
-    <li>学习 VS Code</li>
-    <li>学习 HTML</li>
-  </ul>
+  <section class="page-section">
+    <h2>我的学习内容</h2>
+    <ul id="studyList">
+      <li>学习 Codex</li>
+      <li>学习 Git</li>
+      <li>学习 GitHub</li>
+      <li>学习 VS Code</li>
+      <li>学习 HTML</li>
+    </ul>
 
-  <input id="studyInput" type="text" placeholder="请输入新的学习内容">
-  <button onclick="addStudyItem()">添加学习内容</button>
-  <button onclick="clearStudyItems()">清空新增内容</button>
+    <div class="control-row">
+      <input id="studyInput" type="text" placeholder="请输入新的学习内容">
+      <button onclick="addStudyItem()">添加学习内容</button>
+      <button onclick="clearStudyItems()">清空新增内容</button>
+    </div>
+  </section>
 
-  <h2>我的项目</h2>
-  <p>
-    这是我的 GitHub 仓库：
-    <a href="https://github.com/h924780781-source/codex-learning">codex-learning</a>
-  </p>
+  <section class="page-section">
+    <h2>我的项目</h2>
+    <p>
+      这是我的 GitHub 仓库：
+      <a href="https://github.com/h924780781-source/codex-learning">codex-learning</a>
+    </p>
+  </section>
 
-  <h2>JavaScript 练习</h2>
-  <h2>输入框练习</h2>
+  <section class="page-section">
+    <h2>JavaScript 练习</h2>
+    <h3>输入框练习</h3>
 
-  <input id="nameInput" type="text" placeholder="请输入你的名字">
-  <button onclick="sayHello()">打招呼</button>
+    <div class="control-row">
+      <input id="nameInput" type="text" placeholder="请输入你的名字">
+      <button onclick="sayHello()">打招呼</button>
+    </div>
 
-  <p id="helloResult">这里会显示打招呼结果。</p>
-  <p id="helloCount">你已经打招呼 0 次</p>
-  <button onclick="resetGreetingCount()">重置次数</button>
+    <p id="helloResult">这里会显示打招呼结果。</p>
+    <p id="helloCount">你已经打招呼 0 次</p>
+    <button onclick="resetGreetingCount()">重置次数</button>
 
-  <p id="message">点击按钮前的文字。</p>
-  <button onclick="changeMessage()">点击我</button>
+    <p id="message">点击按钮前的文字。</p>
+    <button onclick="changeMessage()">点击我</button>
+  </section>
 
-  <h2>显示隐藏练习</h2>
-  <p id="secretText">这是一段可以隐藏的文字。</p>
-  <button id="secretButton" onclick="toggleSecret()">隐藏文字</button>
+  <section class="page-section">
+    <h2>显示隐藏练习</h2>
+    <p id="secretText">这是一段可以隐藏的文字。</p>
+    <button id="secretButton" onclick="toggleSecret()">隐藏文字</button>
+  </section>
 
-  <h2>CSS 样式切换练习</h2>
-  <p id="colorText">这段文字可以切换颜色。</p>
-  <button onclick="toggleColor()">切换颜色</button>
+  <section class="page-section">
+    <h2>CSS 样式切换练习</h2>
+    <p id="colorText">这段文字可以切换颜色。</p>
+    <button onclick="toggleColor()">切换颜色</button>
+  </section>
 
-  <h2>动画练习</h2>
-  <p>点击按钮，让方块平滑移动。</p>
-  
-  <div class="game-instructions">
-  <h3>小游戏说明</h3>
-  <ul>
-    <li>点击“开始游戏”后，倒计时开始。</li>
-    <li>使用键盘方向键移动蓝色方块。</li>
-    <li>碰到绿色目标后会获得 1 分。</li>
-    <li>目标会随机出现在新位置。</li>
-    <li>时间结束后会显示最终分数和最高分。</li>
-  </ul>
-</div>
+  <section class="page-section game-panel">
+    <h2>动画练习</h2>
+    <p>点击按钮，让方块平滑移动。</p>
 
- <div class="animation-stage">
-  <div id="moveBox" class="move-box"></div>
-  <div id="targetBox" class="target-box"></div>
-</div>
+    <div class="game-instructions">
+      <h3>小游戏说明</h3>
+      <ul>
+        <li>点击“开始游戏”后，倒计时开始。</li>
+        <li>使用键盘方向键移动蓝色方块。</li>
+        <li>碰到绿色目标后会获得 1 分。</li>
+        <li>目标会随机出现在新位置。</li>
+        <li>时间结束后会显示最终分数和最高分。</li>
+      </ul>
+    </div>
 
-<p id="hitMessage">还没有碰到目标。</p>
-<p id="scoreText">分数：0</p>
-<p id="bestScoreText">最高分：0</p>
-<p id="timeText">剩余时间：30 秒</p>
-<p id="gameStatus">点击开始游戏。</p>
-<button id="startButton" onclick="startGame()">开始游戏</button>
-<button onclick="restartGame()">重新开始游戏</button>
+    <div class="animation-stage">
+      <div id="moveBox" class="move-box"></div>
+      <div id="targetBox" class="target-box"></div>
+    </div>
 
-<button onclick="toggleMoveBox()">移动方块</button>
-<button id="autoMoveButton" onclick="toggleAutoMoveBox()">开始自动移动</button>
+    <div class="game-stats">
+      <p id="hitMessage">还没有碰到目标。</p>
+      <p id="scoreText">分数：0</p>
+      <p id="bestScoreText">最高分：0</p>
+      <p id="timeText">剩余时间：30 秒</p>
+      <p id="gameStatus">点击开始游戏。</p>
+    </div>
+
+    <div class="control-row">
+      <button id="startButton" onclick="startGame()">开始游戏</button>
+      <button onclick="restartGame()">重新开始游戏</button>
+      <button onclick="toggleMoveBox()">移动方块</button>
+      <button id="autoMoveButton" onclick="toggleAutoMoveBox()">开始自动移动</button>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
