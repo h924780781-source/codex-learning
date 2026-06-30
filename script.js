@@ -6,6 +6,7 @@ let isSecretVisible = true;
 let boxX = 0;
 let boxY = 0;
 let score = 0;
+let bestScore = 0;
 let hasHitTarget = false;
 let targetX = 240;
 let targetY = 30;
@@ -175,14 +176,40 @@ function startTimer() {
     timeText.textContent = "剩余时间：" + timeLeft + " 秒";
 
   if (timeLeft <= 0) {
-    clearInterval(timerId);
-    isGameOver = true;
-    gameStatus.textContent = "游戏结束，你的最终分数是 " + score + "。";
+  clearInterval(timerId);
+  isGameOver = true;
+  gameStatus.textContent = "游戏结束，你的最终分数是 " + score + "。";
 
-    const startButton = document.getElementById("startButton");
-    startButton.textContent = "游戏已结束";
+  if (score > bestScore) {
+    bestScore = score;
+
+    const bestScoreText = document.getElementById("bestScoreText");
+    bestScoreText.textContent = "最高分：" + bestScore;
+
+    saveBestScore();
   }
+
+  const startButton = document.getElementById("startButton");
+  startButton.textContent = "游戏已结束";
+}
   }, 1000);
+}
+
+function saveBestScore() {
+  localStorage.setItem("bestScore", bestScore);
+}
+
+function loadBestScore() {
+  const savedBestScore = localStorage.getItem("bestScore");
+
+  if (savedBestScore === null) {
+    return;
+  }
+
+  bestScore = Number(savedBestScore);
+
+  const bestScoreText = document.getElementById("bestScoreText");
+  bestScoreText.textContent = "最高分：" + bestScore;
 }
 
 function restartGame() {
@@ -395,5 +422,6 @@ function clearStudyItems() {
 
 // 页面打开时恢复浏览器本地保存的学习内容
 loadStudyItems();
+loadBestScore();
 updateTargetPosition();
 
