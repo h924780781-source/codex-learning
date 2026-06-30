@@ -85,6 +85,24 @@ ul {
   animation: move-left-right 1.2s ease-in-out infinite alternate;
 }
 
+.game-instructions {
+  background: #fff8c5;
+  border: 1px solid #f0d98c;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.game-instructions h3 {
+  margin-top: 0;
+}
+
+.game-instructions ul {
+  background: transparent;
+  padding: 0 0 0 20px;
+  margin-bottom: 0;
+}
+
 @keyframes move-left-right {
   from {
     transform: translateX(0);
