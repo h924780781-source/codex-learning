@@ -33,10 +33,12 @@ function sayHello() {
   const name = nameInput.value.trim();
 
   if (name === "") {
-    helloResult.textContent = "请先输入名字";
-  } else {
-    helloResult.textContent = "你好，" + name;
-    count = count + 1;
+  helloResult.textContent = "请先输入名字";
+  nameInput.classList.add("input-error");
+} else {
+  nameInput.classList.remove("input-error");
+  helloResult.textContent = "你好，" + name;
+  count = count + 1;
 
     const helloCount = document.getElementById("helloCount");
     helloCount.textContent = "你已经打招呼 " + count + " 次";
@@ -433,4 +435,7 @@ window.addEventListener("scroll", function () {
   } else {
     backTopButton.classList.remove("show");
   }
+});
+document.getElementById("nameInput").addEventListener("input", function () {
+  this.classList.remove("input-error");
 });

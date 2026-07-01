@@ -105,6 +105,12 @@ input:focus {
   outline: 2px solid #b6d2ff;
 }
 
+input.input-error {
+  border-color: #d1242f;
+  outline: 2px solid #ffd7d5;
+  background: #fff5f5;
+}
+
 button {
   transition: transform 0.15s ease, background-color 0.15s ease;
   min-height: 34px;
