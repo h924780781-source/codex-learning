@@ -106,6 +106,7 @@ input:focus {
 }
 
 button {
+  transition: transform 0.15s ease, background-color 0.15s ease;
   min-height: 34px;
   padding: 6px 12px;
   border: 1px solid #1f6feb;
@@ -118,6 +119,10 @@ button {
 
 button:hover {
   background: #1158c7;
+}
+
+button:active {
+  transform: scale(0.96);
 }
 
 button:disabled {
@@ -286,8 +291,15 @@ button:disabled {
   background: #1f6feb;
   color: white;
   text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .back-top:hover {
   background: #1158c7;
+}
+.back-top.show {
+  opacity: 1;
+  pointer-events: auto;
 }
