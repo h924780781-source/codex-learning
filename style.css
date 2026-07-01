@@ -274,3 +274,17 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+.back-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #1f6feb;
+  color: white;
+  text-decoration: none;
+}
+
+.back-top:hover {
+  background: #1158c7;
+}
