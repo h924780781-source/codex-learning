@@ -425,3 +425,12 @@ loadStudyItems();
 loadBestScore();
 updateTargetPosition();
 
+window.addEventListener("scroll", function () {
+  const backTopButton = document.getElementById("backTopButton");
+
+  if (window.scrollY > 200) {
+    backTopButton.classList.add("show");
+  } else {
+    backTopButton.classList.remove("show");
+  }
+});
